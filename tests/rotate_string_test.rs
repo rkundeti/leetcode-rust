@@ -18,6 +18,11 @@ fn test_rotate_string_concat() {
 fn test_rotate_string_concat_other() {
        assert_eq!(rotate_string("abcde".to_string(), "abced".to_string()), false);
 }
+#[test]
+fn test_check_perfect_number() {
+       assert_eq!(check_perfect_number(28), true);
+}
+
 
 
 
