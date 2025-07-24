@@ -1,4 +1,5 @@
 //src/m_rotate_string.rs
+// Approach 1: Brute Force
 pub fn rotate_string(s: String, goal: String) -> bool {
 
             if s.len() != goal.len(){
@@ -15,3 +16,13 @@ pub fn rotate_string(s: String, goal: String) -> bool {
              false
 
     }
+// Approach 2: Concatenation Check
+
+pub fn rotate_string_concat(s: String, goal: String)->bool {
+        if s.len() != goal.len(){
+                    return false;
+                }
+        let double_string = s.clone() + &s;
+        double_string.find(&goal).is_some()
+        
+}
