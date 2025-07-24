@@ -1,26 +1,37 @@
+fn third_max(nums: Vec<i32>) -> i32 {
+    let mut first_max = i64::MIN;
+    let mut second_max = i64::MIN;
+    let mut third_max = i64::MIN;
 
-fn fizz_buzz(n: i32) -> Vec<String> {
-    let word_dict = vec![(3, "Fizz"), (5, "Buzz")];  // Ordered list of pairs
+    for &num in &nums {
+        let num = num as i64;
 
-    let mut answer = Vec::new();
-
-    for i in 1..=n {
-        let mut ans_str = String::new();
-        for &(key,val) in &word_dict {
-            if i % key == 0 {
-                ans_str += val;
-            }
+        if num == first_max || num == second_max || num == third_max {
+            continue;
         }
-        if ans_str.is_empty() {
-            ans_str = i.to_string();
+
+        if num > first_max {
+            third_max = second_max;
+            second_max = first_max;
+            first_max = num;
         }
-        
-        answer.push(ans_str);
+        else if num > second_max {
+            third_max = second_max;
+            second_max = num;
+        } else if num > third_max {
+            third_max = num;
+        }
     }
-answer
+
+    if third_max == i64::MIN {
+        first_max as i32
+    } else {
+        third_max as i32
+    }
 }
 
 fn main() {
-   let result = fizz_buzz(15);
-    println!("{:?}", result);
+    let input = vec![1,2,5,67,4];
+    let result = third_max(input);
+    println!("{}", result);
     }
