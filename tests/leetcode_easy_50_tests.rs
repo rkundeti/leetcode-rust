@@ -33,6 +33,18 @@ fn test_two_sum_other() {
     assert_eq!(two_sum(vec![3, 2, 4], 6), vec![1, 2]);
 }
 
+#[test]
+    fn test_fizz_buzz_15() {
+        let expected = vec![
+            "1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz",
+            "11", "Fizz", "13", "14", "FizzBuzz",
+        ].into_iter().map(String::from).collect::<Vec<String>>();
+
+        let result = fizz_buzz(15);
+        assert_eq!(result, expected);
+    }
+
+
 
 
 
