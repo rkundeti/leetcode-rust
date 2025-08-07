@@ -174,3 +174,16 @@ pub fn length_of_longest_substring(s:String)-> i32 {
     ans as i32
 }
 
+pub fn move_zeroes(nums: &mut Vec<i32>) {
+    let mut reader = 0;
+    let mut writer  = 0;
+    for reader in 1..nums.len() {
+        if nums[reader] != 0 {
+            if reader != writer {
+                nums.swap(writer, reader);
+                writer+=1;
+            }
+        }
+    }
+}
+

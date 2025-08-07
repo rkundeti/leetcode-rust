@@ -65,27 +65,20 @@ use std::cmp::max;
 //     Some(root)
 // }
 
-pub fn length_of_longest_substring(s:String)-> i32 {
-    let mut ans = 0;
-    let mut hm = HashMap::new();
-    let mut i = 0;
-    for (j,c) in s.chars().enumerate() {
-        if let Some(&next_index) = hm.get(&c) {
-            i = max(i,next_index);
+pub fn move_zeroes(nums: &mut Vec<i32>) {
+    let mut reader = 0;
+    let mut writer  = 0;
+    for reader in 1..nums.len() {
+        if nums[reader] != 0 {
+            if reader != writer {
+                nums.swap(writer, reader);
+                writer+=1;
+            }
         }
-        ans = max(ans,j-i + 1);
-        hm.insert(c,j+1);
     }
-    ans as i32
-    //s.len().try_into().unwrap()
 }
-fn main() {
-    
-//   let tree = build_tree();
-
-// //   let  output_rec: Vec<i32> = Vec::new();
-//   let  output_rec  = preorder_traversal(tree.clone());
-//   println!("Iterative preorder : {:?}",output_rec);
-    let input =  "abcdefbdgcbc";
-    println!("length of substring is {}", length_of_longest_substring(input.to_string()));
+fn main() {    
+    let mut nums = vec![0, 1, 0, 3, 12];
+    move_zeroes(&mut nums);
+    println!("{:?}", nums); // [1, 3, 12, 0, 0]
     }

@@ -90,6 +90,20 @@ fn test_length_of_longest_substring() {
     
 }
 
+#[test]
+    fn test_mixed_values() {
+        let mut nums = vec![0, 1, 0, 3, 12];
+        move_zeroes(&mut nums);
+        assert_eq!(nums, vec![1, 3, 12, 0, 0]);
+    }
+
+    #[test]
+    fn test_all_zeros() {
+        let mut nums = vec![0, 0, 0];
+        move_zeroes(&mut nums);
+        assert_eq!(nums, vec![0, 0, 0]);
+    }
+
 
 
 
