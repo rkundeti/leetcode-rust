@@ -1,22 +1,22 @@
 
-fn linear_search(val: i32, arr: &[i32]) -> Option<usize> {
-    for (index,&item) in arr.iter().enumerate() {
-        if item == val {
-            return Some(index);
-    
-    }    
-   }
-   None
+pub fn find_duplicate(nums: Vec<i32>) -> Option<i32> {
+    let n = nums.len();
+    for j in 0..n {
+        for i in (j + 1)..n {
+            if nums[i] == nums[j] {
+                return Some(nums[i]);
+            }
+        }
+    }
+    None
 }
 
 
-fn main() {   
-   //linear search
-    let nums = vec![4, 7, 1, 6, 3];
-    let target = 9;
 
-    match linear_search(target, &nums) {
-        Some(idx) => println!("Found {} at index {}", target, idx),
-        None => println!("{} not found", target),
+fn main() {   
+    let v = vec![1, 3, 4, 2, 2];
+    match find_duplicate(v) {
+        Some(val) => println!("Duplicate found: {}", val),
+        None => println!("No duplicate found"),
     }
 }

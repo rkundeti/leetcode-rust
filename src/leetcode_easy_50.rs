@@ -2,6 +2,7 @@ use std::rc::Rc;
 use std::cell::RefCell;
 use std::collections::HashMap;
 use std::cmp::max;
+use std::collections::HashSet;
 
 #[derive(Debug)]
 pub struct TreeNode {
@@ -311,6 +312,17 @@ pub fn linear_search(val: i32, arr: &[i32]) -> Option<usize> {
    }
    //termination
    None
+}
+
+
+pub fn find_duplicate(nums: Vec<i32>) -> Option<i32> {
+    let mut seen = HashSet::new();
+    for &num in &nums {
+        if !seen.insert(num) { // insert returns false if value already exists
+            return Some(num);
+        }
+    }
+    None
 }
 
 

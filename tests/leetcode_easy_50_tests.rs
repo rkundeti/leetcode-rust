@@ -243,6 +243,51 @@ fn all_odds() {
         assert_eq!(linear_search(2, &arr), Some(1));
     }
 
+    #[test]
+    fn finds_duplicate_in_middle() {
+        let nums = vec![1, 3, 4, 2, 2];
+        assert_eq!(find_duplicate(nums), Some(2));
+    }
+
+    #[test]
+    fn finds_duplicate_at_end() {
+        let nums = vec![5, 1, 5];
+        assert_eq!(find_duplicate(nums), Some(5));
+    }
+
+    #[test]
+    fn finds_duplicate_at_start() {
+        let nums = vec![7, 7, 2, 3];
+        assert_eq!(find_duplicate(nums), Some(7));
+    }
+
+    #[test]
+    fn works_with_multiple_duplicates_returns_first_found() {
+        let nums = vec![1, 2, 3, 2, 1];
+        assert_eq!(find_duplicate(nums), Some(2)); // first duplicate found
+    }
+
+    #[test]
+    fn returns_none_when_no_duplicates() {
+        let nums = vec![1, 2, 3, 4, 5];
+        assert_eq!(find_duplicate(nums), None);
+    }
+
+    #[test]
+    fn works_with_empty_list() {
+        let nums: Vec<i32> = vec![];
+        assert_eq!(find_duplicate(nums), None);
+    }
+
+    #[test]
+    fn works_with_single_element() {
+        let nums = vec![10];
+        assert_eq!(find_duplicate(nums), None);
+    }
+
+
+
+
 
 
 
