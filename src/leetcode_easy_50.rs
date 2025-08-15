@@ -175,7 +175,6 @@ pub fn length_of_longest_substring(s:String)-> i32 {
 }
 
 pub fn move_zeroes(nums: &mut Vec<i32>) {
-    let mut reader = 0;
     let mut writer  = 0;
     for reader in 1..nums.len() {
         if nums[reader] != 0 {
@@ -186,4 +185,169 @@ pub fn move_zeroes(nums: &mut Vec<i32>) {
         }
     }
 }
+
+pub fn three_consecutive_odds(arr: Vec<i32>) -> bool {
+        // let has_three_odds = arr.iter()
+        //     .map(|x| x % 2 != 0)
+        //     .collect::<Vec<_>>()
+        //     .windows(3)
+        //     .any(|w| w.iter().all(|&b| b));
+
+        // has_three_odds
+        arr.windows(3).any(|w| w.iter().all(|n| n % 2 != 0))
+}
+
+pub fn my_atoi(s: String) -> i32 {
+        let mut index = 0;
+        let n = s.len();
+        let chars: Vec<char> = s.chars().collect();
+        let mut result: i32 = 0;
+        let mut sign = 1;
+
+        // Skip leading whitespace
+        while index < n && chars[index] == ' ' {
+            index += 1;
+        }
+
+        // Check for optional sign
+        if index < n {
+            if chars[index] == '-' {
+                sign = -1;
+                index += 1;
+            } else if chars[index] == '+' {
+                index += 1;
+            }
+        }
+
+        // If next character is NOT a digit, return 0 (e.g., "+-12", "--1", "+abc")
+        if index >= n || !chars[index].is_ascii_digit() {
+            return 0;
+        }
+
+        // Parse digits
+        while index < n && chars[index].is_ascii_digit() {
+            let digit = chars[index].to_digit(10).unwrap() as i32;
+
+            if result > (i32::MAX - digit) / 10 {
+                return if sign == 1 { i32::MAX } else { i32::MIN };
+            }
+
+            result = result * 10 + digit;
+            index += 1;
+        }
+
+        sign * result
+    }
+
+
+    // reverse string recursive 
+
+pub fn reverse_string(s: &mut Vec<char>) {
+fn helper(start: usize,end: usize,s: &mut Vec<char>){
+    if start > end {
+        return;
+    }
+    s.swap(start,end);
+    helper(start + 1, end -1, s);
+
+}
+if !s.is_empty() {
+    helper( 0, s.len() - 1,s);
+}
+}
+
+pub fn sort_ascending_insert(v:&mut Vec<i32>) {
+    // Initialization
+    let n = v.len();
+   // maintenance
+    for j in 1..n{
+       
+        let key = v[j];
+         let mut i = j;
+        
+      
+        while i > 0 && v[i -1] > key {
+            v[i] = v[i -1];
+            i-=1;
+
+        }
+    // termination
+        v[i] = key;
+      
+    }
+    
+}
+
+
+pub fn sort_descending_insert(v:&mut Vec<i32>) {
+    // Initialization
+    let n = v.len();
+   // maintenance
+    for j in 1..n{
+       
+        let key = v[j];
+         let mut i = j;
+        
+      
+        while i > 0 && v[i -1] < key {
+            v[i] = v[i -1];
+            i-=1;
+
+        }
+    // termination
+        v[i] = key;
+      
+    }
+    
+}
+
+ #[test]
+    fn test_empty_vector() {
+        let mut v: Vec<i32> = vec![];
+        sort_descending_insert(&mut v);
+        assert_eq!(v, vec![]);
+    }
+
+    #[test]
+    fn test_single_element() {
+        let mut v = vec![42];
+        sort_descending_insert(&mut v);
+        assert_eq!(v, vec![42]);
+    }
+
+    #[test]
+    fn test_already_descending() {
+        let mut v = vec![9, 7, 5, 3, 1];
+        sort_descending_insert(&mut v);
+        assert_eq!(v, vec![9, 7, 5, 3, 1]);
+    }
+
+    #[test]
+    fn test_ascending_input() {
+        let mut v = vec![1, 2, 3, 4, 5];
+        sort_descending_insert(&mut v);
+        assert_eq!(v, vec![5, 4, 3, 2, 1]);
+    }
+
+    #[test]
+    fn test_unsorted() {
+        let mut v = vec![3, 1, 4, 1, 5, 9, 2];
+        sort_descending_insert(&mut v);
+        assert_eq!(v, vec![9, 5, 4, 3, 2, 1, 1]);
+    }
+
+    #[test]
+    fn test_with_duplicates() {
+        let mut v = vec![2, 3, 2, 1, 3, 1];
+        sort_descending_insert(&mut v);
+        assert_eq!(v, vec![3, 3, 2, 2, 1, 1]);
+    }
+
+    #[test]
+    fn test_negative_numbers() {
+        let mut v = vec![0, -5, 3, -1, 2];
+        sort_descending_insert(&mut v);
+        assert_eq!(v, vec![3, 2, 0, -1, -5]);
+    }
+
 

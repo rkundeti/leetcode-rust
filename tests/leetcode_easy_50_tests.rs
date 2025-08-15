@@ -104,6 +104,62 @@ fn test_length_of_longest_substring() {
         assert_eq!(nums, vec![0, 0, 0]);
     }
 
+#[test]
+fn all_odds() {
+    let v = vec![1,2,34,3,4,5,7,23,12];
+    assert!(three_consecutive_odds(v));
+}
+
+#[test]
+    fn test_empty_vector() {
+        let mut v: Vec<i32> = vec![];
+        sort_ascending_insert(&mut v);
+        assert_eq!(v, vec![]);
+    }
+
+    #[test]
+    fn test_single_element() {
+        let mut v = vec![42];
+        sort_ascending_insert(&mut v);
+        assert_eq!(v, vec![42]);
+    }
+
+    #[test]
+    fn test_already_sorted() {
+        let mut v = vec![1, 2, 3, 4, 5];
+        sort_ascending_insert(&mut v);
+        assert_eq!(v, vec![1, 2, 3, 4, 5]);
+    }
+
+    #[test]
+    fn test_reverse_sorted() {
+        let mut v = vec![5, 4, 3, 2, 1];
+        sort_ascending_insert(&mut v);
+        assert_eq!(v, vec![1, 2, 3, 4, 5]);
+    }
+
+    #[test]
+    fn test_unsorted() {
+        let mut v = vec![3, 1, 4, 1, 5, 9, 2];
+        sort_ascending_insert(&mut v);
+        assert_eq!(v, vec![1, 1, 2, 3, 4, 5, 9]);
+    }
+
+    #[test]
+    fn test_with_duplicates() {
+        let mut v = vec![2, 3, 2, 1, 3, 1];
+        sort_ascending_insert(&mut v);
+        assert_eq!(v, vec![1, 1, 2, 2, 3, 3]);
+    }
+
+    #[test]
+    fn test_negative_numbers() {
+        let mut v = vec![0, -5, 3, -1, 2];
+        sort_ascending_insert(&mut v);
+        assert_eq!(v, vec![-5, -1, 0, 2, 3]);
+    }
+
+
 
 
 
