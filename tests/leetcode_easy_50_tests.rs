@@ -207,6 +207,41 @@ fn all_odds() {
         assert_eq!(v, vec![3, 2, 0, -1, -5]);
     }
 
+    #[test]
+    fn finds_first_element() {
+        let arr = [5, 10, 15, 20];
+        assert_eq!(linear_search(5, &arr), Some(0));
+    }
+
+    #[test]
+    fn finds_middle_element() {
+        let arr = [5, 10, 15, 20];
+        assert_eq!(linear_search(15, &arr), Some(2));
+    }
+
+    #[test]
+    fn finds_last_element() {
+        let arr = [5, 10, 15, 20];
+        assert_eq!(linear_search(20, &arr), Some(3));
+    }
+
+    #[test]
+    fn returns_none_if_not_found() {
+        let arr = [5, 10, 15, 20];
+        assert_eq!(linear_search(99, &arr), None);
+    }
+
+    #[test]
+    fn works_with_empty_array() {
+        let arr: [i32; 0] = [];
+        assert_eq!(linear_search(1, &arr), None);
+    }
+
+    #[test]
+    fn finds_first_match_if_duplicates() {
+        let arr = [1, 2, 3, 2, 1];
+        assert_eq!(linear_search(2, &arr), Some(1));
+    }
 
 
 

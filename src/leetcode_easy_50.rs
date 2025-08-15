@@ -300,3 +300,17 @@ pub fn sort_descending_insert(v:&mut Vec<i32>) {
     }    
 }
 
+pub fn linear_search(val: i32, arr: &[i32]) -> Option<usize> {
+    //initialization index  0
+    // maintnance
+    for (index,&item) in arr.iter().enumerate() {
+        if item == val {
+            return Some(index);
+    
+    }    
+   }
+   //termination
+   None
+}
+
+
