@@ -158,6 +158,56 @@ fn all_odds() {
         sort_ascending_insert(&mut v);
         assert_eq!(v, vec![-5, -1, 0, 2, 3]);
     }
+ #[test]
+    fn test_empty_vector_d() {
+        let mut v: Vec<i32> = vec![];
+        sort_descending_insert(&mut v);
+        assert_eq!(v, vec![]);
+    }
+
+    #[test]
+    fn test_single_element_d() {
+        let mut v = vec![42];
+        sort_descending_insert(&mut v);
+        assert_eq!(v, vec![42]);
+    }
+
+    #[test]
+    fn test_already_descending_d() {
+        let mut v = vec![9, 7, 5, 3, 1];
+        sort_descending_insert(&mut v);
+        assert_eq!(v, vec![9, 7, 5, 3, 1]);
+    }
+
+    #[test]
+    fn test_ascending_input_d() {
+        let mut v = vec![1, 2, 3, 4, 5];
+        sort_descending_insert(&mut v);
+        assert_eq!(v, vec![5, 4, 3, 2, 1]);
+    }
+
+    #[test]
+    fn test_unsorted_d() {
+        let mut v = vec![3, 1, 4, 1, 5, 9, 2];
+        sort_descending_insert(&mut v);
+        assert_eq!(v, vec![9, 5, 4, 3, 2, 1, 1]);
+    }
+
+    #[test]
+    fn test_with_duplicates_d() {
+        let mut v = vec![2, 3, 2, 1, 3, 1];
+        sort_descending_insert(&mut v);
+        assert_eq!(v, vec![3, 3, 2, 2, 1, 1]);
+    }
+
+    #[test]
+    fn test_negative_numbers_d() {
+        let mut v = vec![0, -5, 3, -1, 2];
+        sort_descending_insert(&mut v);
+        assert_eq!(v, vec![3, 2, 0, -1, -5]);
+    }
+
+
 
 
 
